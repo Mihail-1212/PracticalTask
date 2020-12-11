@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load task_extras %}
+
+{% block content_caption %}
+
+  Задача - {{ task.name }}
+  <span class="badge badge-pill {{ task|get_badge_status_class }}" style="font-size: 12pt;">
+    {{ task.get_status_display  }}
+  </span>
+
+{% endblock content_caption %}
+
+
+{% block content %}
+
+  <div class="row p-5 " style="font-size: 14pt;">
+    <p class="col-12 text-justify text-wrap">
+      {{ task.text }}
+    </p>
+    <p class="col-lg-12 text-justify text-dark" style="font-size: 12pt">
+      Дата начала: {{ task.date_start|date:'H:i d.m.Y' }}
+    </p>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "admin/change_list.html" %}
+
+{% load static %}
+
+{% block content %}
+  <!-- Render chart -->
+  <div style="width: 80%;">
+    <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" height="642" style="display: block; height: 514px; width: 1218px;"></canvas>
+  </div>
+
+  {{ block.super }}
+
+  <script type="text/javascript">
+    const DATA ={{ chart_data | safe }};
+    console.log(DATA);
+  </script>
+
+  <script type="text/javascript" src="{% static "js/dateformat.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/Chart.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/feather.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/dashboard.js" %}"></script>
+
+{% endblock %}
